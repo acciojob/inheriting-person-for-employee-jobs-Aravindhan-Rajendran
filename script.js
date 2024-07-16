@@ -1,17 +1,25 @@
-// complete this js code
-function Person(name, age) {
-	let name=this.name;
-	let age=this.age;
-	function greet(){
-		return `Hello, my name is ${name}, I am ${age} years old.`
-	}
-function Employee(name, age, jobTitle) {
-	let jobtitle=this.jobtitle;
-	return`Hello, my name is ${name}, I am ${age} years old, and my job title is ${jobtitle}`;	
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    greet() {
+        return `Hello, my name is ${this.name}, I am ${this.age} years old.`;
+    }
 }
+
+class Employee extends Person {
+    constructor(name, age, jobTitle) {
+        super(name, age);
+        this.jobTitle = jobTitle;
+    }
+
+    jobGreet() {
+        return `Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`;
+    }
 }
-let obj1=new Object("Alice",25,"Assistant");
-let obj1=new Object("Bob",30,"Manager");
-// Do not change code below this line
+
+// Expose the classes to the window object for Cypress tests
 window.Person = Person;
 window.Employee = Employee;
